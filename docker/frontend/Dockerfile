@@ -4,9 +4,10 @@
 # Build Angular app
 FROM node:20 AS builder
 WORKDIR /app
-COPY . .
+COPY apps/frontend/package*.json ./
 RUN npm install -g @angular/cli
 RUN npm install
+COPY apps/frontend/ .
 RUN ng build --configuration production
 
 #we need to use server to run angular apps ngnx
