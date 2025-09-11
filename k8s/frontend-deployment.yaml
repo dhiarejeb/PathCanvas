@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pathcanvas-frontend
+  labels:
+    app: pathcanvas-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pathcanvas-frontend
+  template:
+    metadata:
+      labels:
+        app: pathcanvas-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: meddhiarejeb/pathcanvas-frontend:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: API_URL
+              value: "http://pathcanvas-backend-service:8080"  # points to backend inside cluster

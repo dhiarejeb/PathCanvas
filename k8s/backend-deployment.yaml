@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pathcanvas-backend
+  labels:
+    app: pathcanvas-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pathcanvas-backend
+  template:
+    metadata:
+      labels:
+        app: pathcanvas-backend
+    spec:
+      containers:
+        - name: backend
+          image: meddhiarejeb/pathcanvas-backend:latest
+          ports:
+            - containerPort: 8080   # adjust if backend runs on another port
+
