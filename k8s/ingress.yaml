@@ -3,7 +3,9 @@ kind: Ingress
 metadata:
   name: pathcanvas-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+
 spec:
   rules:
     - host: pathcanvas.local
